@@ -34,7 +34,7 @@ class ReportExportPack:
         return ReportExportPlugin()
 
     def create_permissions(self) -> list[str]:
-        return ["net"]
+        return ["net:reports.blobs"]
 
 
 pack = ReportExportPack()
