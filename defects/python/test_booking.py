@@ -68,6 +68,16 @@ def test_hour_is_free_before_it_is_booked():
     assert booking.book("A1", 12, "Мороз")["status"] == "ok"
 
 
+def test_free_hours_are_updated_after_booking():
+    booking = service()
+
+    assert 12 in booking.free_hours("A1")
+
+    booking.book("A1", 12, "Мороз")
+
+    assert 12 not in booking.free_hours("A1")
+
+
 def test_taken_hour_is_rejected():
     booking = service()
     booking.book("A1", 14, "Іваненко")

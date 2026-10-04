@@ -55,7 +55,9 @@ class CachedRoomRepo:
         return list(self._cache[room])
 
     def create(self, room, hour, who, code):
-        return self._inner.create(room, hour, who, code)
+        result = self._inner.create(room, hour, who, code)
+        self._cache.pop(room, None)
+        return result
 
 
 class BookingNumbers:
